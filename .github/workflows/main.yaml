@@ -12,6 +12,9 @@ env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
 
+permissions:
+  actions: write
+
 jobs:
   ssh-proxy:
     runs-on: ubuntu-latest
