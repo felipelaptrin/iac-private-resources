@@ -9,7 +9,6 @@ env:
   AWS_ACCESS_KEY: "${{ secrets.AWS_ACCESS_KEY }}"
   AWS_SECRET_ACCESS_KEY: "${{ secrets.AWS_SECRET_ACCESS_KEY }}"
   VULTR_API_KEY: "${{ secrets.VULTR_API_KEY }}"
-  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
 
 jobs:
@@ -22,11 +21,39 @@ jobs:
       - name: Plan ssh-proxy
         if: github.ref != 'refs/heads/main'
         uses: ./.github/actions/plan
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PAT_GITHUB: ${{ secrets.PAT_GITHUB }}
         with:
           folder: ssh-proxy
 
       - name: Apply ssh-proxy
         if: github.ref == 'refs/heads/main'
         uses: ./.github/actions/apply
+        env:
+          GITHUB_TOKEN: ${{ secrets.PAT_GITHUB }}
         with:
           folder: ssh-proxy
+
+  self-hosted:
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Checkout"
+        uses: actions/checkout@v4
+
+      - name: Plan self-hosted
+        if: github.ref != 'refs/heads/main'
+        uses: ./.github/actions/plan
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PAT_GITHUB: ${{ secrets.PAT_GITHUB }}
+        with:
+          folder: self-hosted
+
+      - name: Apply self-hosted
+        if: github.ref == 'refs/heads/main'
+        uses: ./.github/actions/apply
+        env:
+          GITHUB_TOKEN: ${{ secrets.PAT_GITHUB }}
+        with:
+          folder: self-hosted
