@@ -26,7 +26,7 @@ jobs:
           folder: ssh-proxy
 
       - name: Apply ssh-proxy
-        # if: github.ref == 'refs/heads/main'
+        if: github.ref == 'refs/heads/main'
         uses: ./.github/actions/apply
         with:
           folder: ssh-proxy
