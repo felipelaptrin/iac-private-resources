@@ -9,10 +9,7 @@ env:
   AWS_ACCESS_KEY: "${{ secrets.AWS_ACCESS_KEY }}"
   AWS_SECRET_ACCESS_KEY: "${{ secrets.AWS_SECRET_ACCESS_KEY }}"
   VULTR_API_KEY: "${{ secrets.VULTR_API_KEY }}"
-  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
-
-permissions: write-all
 
 jobs:
   ssh-proxy:
@@ -24,12 +21,16 @@ jobs:
       - name: Plan ssh-proxy
         if: github.ref != 'refs/heads/main'
         uses: ./.github/actions/plan
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           folder: ssh-proxy
 
       - name: Apply ssh-proxy
         if: github.ref == 'refs/heads/main'
         uses: ./.github/actions/apply
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           folder: ssh-proxy
 
@@ -42,11 +43,15 @@ jobs:
       - name: Plan self-hosted
         if: github.ref != 'refs/heads/main'
         uses: ./.github/actions/plan
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           folder: self-hosted
 
       - name: Apply self-hosted
         if: github.ref == 'refs/heads/main'
         uses: ./.github/actions/apply
+        env:
+          GITHUB_PAT: ${{ secrets.PAT_GITHUB }}
         with:
           folder: self-hosted
