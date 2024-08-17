@@ -6,5 +6,5 @@ data "vultr_os" "ubuntu" {
 }
 
 data "github_actions_registration_token" "this" {
-  repository = var.repo_name
+  repository = local.repo_name
 }
