@@ -20,8 +20,11 @@ runs:
 
     - name: Plan
       shell: bash
-      working-directory: ${{ inputs.folder }}
-      run: devbox run plan
+      env:
+        FOLDER: ${{ inputs.folder }}
+      run: |
+        devbox run tofu -chdir=$FOLDER init
+        devbox run tofu -chdir=$FOLDER plan -var-file=variables.tfvars
 
     - name: Commit .terraform.lock.hcl files
       working-directory: ${{ inputs.folder }}

@@ -14,4 +14,6 @@ runs:
 
     - name: Apply Opentofu
       shell: bash
-      run: devbox run apply
+      env:
+        FOLDER: ${{ inputs.folder }}
+      run: devbox run tofu -chdir=$FOLDER apply -var-file=variables.tfvars -auto-approve
