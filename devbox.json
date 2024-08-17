@@ -3,17 +3,5 @@
   "packages": [
     "opentofu@1.8.1",
     "vultr-cli@3.3.1"
-  ],
-  "shell": {
-    "scripts": {
-      "plan": [
-        "tofu init",
-        "tofu plan -var-file=variables.tfvars"
-      ],
-      "apply": [
-        "tofu init",
-        "tofu apply -var-file=variables.tfvars -auto-approve"
-      ]
-    }
-  }
+  ]
 }
