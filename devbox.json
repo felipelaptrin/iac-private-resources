@@ -8,7 +8,11 @@
     "scripts": {
       "plan": [
         "tofu init",
-        "tofu plan -var-file=variables.tfvars -auto-approve"
+        "tofu plan -var-file=variables.tfvars"
+      ],
+      "apply": [
+        "tofu init",
+        "tofu apply -var-file=variables.tfvars -auto-approve"
       ]
     }
   }
