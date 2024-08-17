@@ -1,0 +1,33 @@
+name: "Opentofu Actions"
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+env:
+  AWS_ACCESS_KEY: "${{ secrets.AWS_ACCESS_KEY }}"
+  AWS_SECRET_ACCESS_KEY: "${{ secrets.AWS_SECRET_ACCESS_KEY }}"
+  VULTR_API_KEY: "${{ secrets.VULTR_API_KEY }}"
+
+jobs:
+  ssh-proxy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Checkout"
+        uses: actions/checkout@v4
+
+      - name: Install devbox
+        uses: jetify-com/devbox-install-action@v0.11.0
+
+      - name: Plan ssh-proxy
+        if: github.ref != 'refs/heads/main'
+        uses: ./.github/actions/plan
+        with:
+          folder: ssh-proxy
+
+      - name: Apply ssh-proxy
+        if: github.ref == 'refs/heads/main'
+        uses: ./.github/actions/apply
+        with:
+          folder: ssh-proxy

@@ -1,0 +1,16 @@
+name: plan
+description: Apply IaC
+
+inputs:
+  folder:
+    description: Name of the folder that terraform will run
+    required: true
+
+runs:
+  using: "composite"
+  steps:
+    - name: Install devbox
+        uses: jetify-com/devbox-install-action@v0.11.0
+
+    - name: Apply Opentofu
+      run: devbox run apply

@@ -1,0 +1,43 @@
+name: plan
+description: Plan IaC
+
+inputs:
+  folder:
+    description: Name of the folder that terraform will run
+    required: true
+
+runs:
+  using: "composite"
+  steps:
+    - name: Install devbox
+        uses: jetify-com/devbox-install-action@v0.11.0
+
+    - name: Plan Opentofu
+      run: devbox run self-hosted-plan
+
+    - name: Configure Git
+      shell: bash
+      run: |
+        git config --global user.name "github-actions[bot]"
+        git config --global user.email "github-actions[bot]@users.noreply.github.com"
+
+    - name: Plan
+      shell: bash
+      working-directory: ${{ inputs.folder }}
+      run: devbox run plan
+
+    - name: Commit .terraform.lock.hcl files
+      working-directory: ${{ inputs.folder }}
+      if: github.ref != 'refs/heads/main'
+      env:
+        GITHUB_TOKEN: ${{ env.GITHUB_TOKEN }}
+      shell: bash
+      run: |
+        if [ -n "$(git status --porcelain)" ]; then
+          gh pr checkout ${{ github.event.pull_request.number }}
+          git add .
+          git commit -m "Add .terraform.lock.hcl files"
+          git push
+        else
+          echo "Nothing to commit."
+        fi
