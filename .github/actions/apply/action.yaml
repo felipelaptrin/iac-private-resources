@@ -20,4 +20,6 @@ runs:
         AWS_ACCESS_KEY: ${{ env.AWS_ACCESS_KEY }}
         AWS_SECRET_ACCESS_KEY: ${{ env.AWS_SECRET_ACCESS_KEY }}
         GITHUB_TOKEN: ${{ env.GITHUB_TOKEN }}
-      run: devbox run tofu -chdir=$FOLDER apply -var-file=variables.tfvars -auto-approve
+      run: |
+        devbox run tofu -chdir=$FOLDER init
+        devbox run tofu -chdir=$FOLDER apply -var-file=variables.tfvars -auto-approve
