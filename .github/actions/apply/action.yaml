@@ -10,7 +10,8 @@ runs:
   using: "composite"
   steps:
     - name: Install devbox
-        uses: jetify-com/devbox-install-action@v0.11.0
+      uses: jetify-com/devbox-install-action@v0.11.0
 
     - name: Apply Opentofu
+      shell: bash
       run: devbox run apply

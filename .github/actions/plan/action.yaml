@@ -13,6 +13,7 @@ runs:
       uses: jetify-com/devbox-install-action@v0.11.0
 
     - name: Plan Opentofu
+      shell: bash
       run: devbox run self-hosted-plan
 
     - name: Configure Git
