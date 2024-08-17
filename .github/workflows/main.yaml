@@ -9,6 +9,7 @@ env:
   AWS_ACCESS_KEY: "${{ secrets.AWS_ACCESS_KEY }}"
   AWS_SECRET_ACCESS_KEY: "${{ secrets.AWS_SECRET_ACCESS_KEY }}"
   VULTR_API_KEY: "${{ secrets.VULTR_API_KEY }}"
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
 jobs:
   ssh-proxy:
@@ -16,9 +17,6 @@ jobs:
     steps:
       - name: "Checkout"
         uses: actions/checkout@v4
-
-      - name: Install devbox
-        uses: jetify-com/devbox-install-action@v0.11.0
 
       - name: Plan ssh-proxy
         if: github.ref != 'refs/heads/main'

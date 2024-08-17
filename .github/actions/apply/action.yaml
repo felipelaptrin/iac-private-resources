@@ -1,16 +1,23 @@
-name: plan
+name: apply
 description: Apply IaC
 
 inputs:
   folder:
-    description: Name of the folder that terraform will run
+    description: Name of the folder that opentofu will run
     required: true
 
 runs:
   using: "composite"
   steps:
     - name: Install devbox
-        uses: jetify-com/devbox-install-action@v0.11.0
+      uses: jetify-com/devbox-install-action@v0.11.0
 
     - name: Apply Opentofu
-      run: devbox run apply
+      shell: bash
+      env:
+        FOLDER: ${{ inputs.folder }}
+        VULTR_API_KEY: ${{ env.VULTR_API_KEY }}
+        AWS_ACCESS_KEY: ${{ env.AWS_ACCESS_KEY }}
+        AWS_SECRET_ACCESS_KEY: ${{ env.AWS_SECRET_ACCESS_KEY }}
+        GITHUB_TOKEN: ${{ env.GITHUB_TOKEN }}
+      run: devbox run tofu -chdir=$FOLDER apply -var-file=variables.tfvars -auto-approve

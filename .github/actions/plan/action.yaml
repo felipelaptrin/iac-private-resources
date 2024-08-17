@@ -10,10 +10,7 @@ runs:
   using: "composite"
   steps:
     - name: Install devbox
-        uses: jetify-com/devbox-install-action@v0.11.0
-
-    - name: Plan Opentofu
-      run: devbox run self-hosted-plan
+      uses: jetify-com/devbox-install-action@v0.11.0
 
     - name: Configure Git
       shell: bash
@@ -23,8 +20,15 @@ runs:
 
     - name: Plan
       shell: bash
-      working-directory: ${{ inputs.folder }}
-      run: devbox run plan
+      env:
+        FOLDER: ${{ inputs.folder }}
+        VULTR_API_KEY: ${{ env.VULTR_API_KEY }}
+        AWS_ACCESS_KEY: ${{ env.AWS_ACCESS_KEY }}
+        AWS_SECRET_ACCESS_KEY: ${{ env.AWS_SECRET_ACCESS_KEY }}
+        GITHUB_TOKEN: ${{ env.GITHUB_TOKEN }}
+      run: |
+        devbox run tofu -chdir=$FOLDER init
+        devbox run tofu -chdir=$FOLDER plan -var-file=variables.tfvars
 
     - name: Commit .terraform.lock.hcl files
       working-directory: ${{ inputs.folder }}
