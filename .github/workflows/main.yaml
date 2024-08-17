@@ -30,3 +30,21 @@ jobs:
         uses: ./.github/actions/apply
         with:
           folder: ssh-proxy
+
+  self-hosted:
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Checkout"
+        uses: actions/checkout@v4
+
+      - name: Plan self-hosted
+        if: github.ref != 'refs/heads/main'
+        uses: ./.github/actions/plan
+        with:
+          folder: self-hosted
+
+      - name: Apply self-hosted
+        if: github.ref == 'refs/heads/main'
+        uses: ./.github/actions/apply
+        with:
+          folder: self-hosted
