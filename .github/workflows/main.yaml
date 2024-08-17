@@ -9,6 +9,7 @@ env:
   AWS_ACCESS_KEY: "${{ secrets.AWS_ACCESS_KEY }}"
   AWS_SECRET_ACCESS_KEY: "${{ secrets.AWS_SECRET_ACCESS_KEY }}"
   VULTR_API_KEY: "${{ secrets.VULTR_API_KEY }}"
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
 jobs:
   ssh-proxy:
