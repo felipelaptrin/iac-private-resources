@@ -15,7 +15,7 @@ output "database_host" {
 
 output "database_port" {
   description = "Port of the database"
-  value       = vultr_database.this.host
+  value       = vultr_database.this.port
 }
 
 output "database_user" {

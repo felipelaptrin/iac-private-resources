@@ -18,6 +18,10 @@ runs:
         git config --global user.name "github-actions[bot]"
         git config --global user.email "github-actions[bot]@users.noreply.github.com"
 
+    - uses: webfactory/ssh-agent@v0.9.0
+      with:
+        ssh-private-key: ${{ env.SSH_PRIVATE_KEY }}
+
     - name: Plan
       shell: bash
       env:
