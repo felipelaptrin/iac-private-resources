@@ -1,9 +1,9 @@
-name: plan
+name: apply
 description: Apply IaC
 
 inputs:
   folder:
-    description: Name of the folder that terraform will run
+    description: Name of the folder that opentofu will run
     required: true
 
 runs:
