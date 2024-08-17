@@ -23,6 +23,7 @@ jobs:
         uses: ./.github/actions/plan
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PAT_GITHUB: ${{ secrets.PAT_GITHUB }}
         with:
           folder: ssh-proxy
 
