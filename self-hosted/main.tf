@@ -2,6 +2,7 @@ locals {
   region                 = "mia" # Miami
   label                  = "self-hosted"
   github_actions_version = split("v", var.github_actions_version)[1]
+  repo_name              = split("/", var.repo_name)[1]
 }
 
 ############################
@@ -49,12 +50,14 @@ resource "vultr_instance" "runner" {
   ddos_protection     = false
   activation_email    = false
   user_data           = <<EOF
-  #!/bin/bash
-  mkdir actions-runner && cd actions-runner
-  curl -o actions-runner-linux.tar.gz -L https://github.com/actions/runner/releases/download/${var.github_actions_version}/actions-runner-linux-x64-${local.github_actions_version}.tar.gz
-  tar xzf ./actions-runner-linux.tar.gz
-  ./config.sh --url https://github.com/${var.repo_name} --token ${data.github_actions_registration_token.this.token}
-  ./run.sh
+#!/bin/bash
+echo "ubuntu ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
+cd /home/ubuntu && mkdir actions-runner && cd actions-runner
+curl -o actions-runner-linux.tar.gz -L https://github.com/actions/runner/releases/download/${var.github_actions_version}/actions-runner-linux-x64-${local.github_actions_version}.tar.gz
+tar xzf ./actions-runner-linux.tar.gz
+sudo chown -R ubuntu /home/ubuntu/actions-runner
+sudo -u ubuntu ./config.sh --name vultr --replace --url https://github.com/${var.repo_name} --token ${data.github_actions_registration_token.this.token}
+sudo -u ubuntu ./run.sh
   EOF
 }
 
@@ -73,6 +76,6 @@ resource "vultr_database" "this" {
   ]
 }
 
-resource "postgresql_database" "this" {
-  name = "demo"
-}
+# resource "postgresql_database" "this" {
+#   name = "demo"
+# }

@@ -9,7 +9,7 @@ output "database_name" {
 }
 
 output "database_host" {
-  description = "Name of the database"
+  description = "Host of the database"
   value       = vultr_database.this.host
 }
 
