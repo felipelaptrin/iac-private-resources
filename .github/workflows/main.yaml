@@ -30,7 +30,7 @@ jobs:
         if: github.ref == 'refs/heads/main'
         uses: ./.github/actions/apply
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.PAT_GITHUB }}
         with:
           folder: ssh-proxy
 
@@ -52,6 +52,6 @@ jobs:
         if: github.ref == 'refs/heads/main'
         uses: ./.github/actions/apply
         env:
-          GITHUB_PAT: ${{ secrets.PAT_GITHUB }}
+          GITHUB_TOKEN: ${{ secrets.PAT_GITHUB }}
         with:
           folder: self-hosted
