@@ -1,0 +1,101 @@
+{
+  "lockfile_version": "1",
+  "packages": {
+    "opentofu@1.8.1": {
+      "last_modified": "2024-08-10T11:55:14Z",
+      "resolved": "github:NixOS/nixpkgs/8987be1fef03440514ebf3b0b60e0c44fc13eb6c#opentofu",
+      "source": "devbox-search",
+      "version": "1.8.1",
+      "systems": {
+        "aarch64-darwin": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/g3rvykpfi5knjpln890zyf40qdgvfig9-opentofu-1.8.1",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/g3rvykpfi5knjpln890zyf40qdgvfig9-opentofu-1.8.1"
+        },
+        "aarch64-linux": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/vvjbq8c0y0x3i9i51gfbk1s2ff2f0vmv-opentofu-1.8.1",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/vvjbq8c0y0x3i9i51gfbk1s2ff2f0vmv-opentofu-1.8.1"
+        },
+        "x86_64-darwin": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/vq00vcr61ndgbl1fsia1az45g1m85khp-opentofu-1.8.1",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/vq00vcr61ndgbl1fsia1az45g1m85khp-opentofu-1.8.1"
+        },
+        "x86_64-linux": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/mh5qa2148v45jz922lga6b6jzq3ym9pj-opentofu-1.8.1",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/mh5qa2148v45jz922lga6b6jzq3ym9pj-opentofu-1.8.1"
+        }
+      }
+    },
+    "vultr-cli@3.3.1": {
+      "last_modified": "2024-07-31T08:48:38Z",
+      "resolved": "github:NixOS/nixpkgs/c3392ad349a5227f4a3464dce87bcc5046692fce#vultr-cli",
+      "source": "devbox-search",
+      "version": "3.3.1",
+      "systems": {
+        "aarch64-darwin": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/lnchnl9qyrpz95c0d9229jcinnirzp77-vultr-cli-3.3.1",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/lnchnl9qyrpz95c0d9229jcinnirzp77-vultr-cli-3.3.1"
+        },
+        "aarch64-linux": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/k4mx8m9scqy4gvf4mb2h6il5d94iqdsa-vultr-cli-3.3.1",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/k4mx8m9scqy4gvf4mb2h6il5d94iqdsa-vultr-cli-3.3.1"
+        },
+        "x86_64-darwin": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/rl1jb4y5vl2i5ps221bl97n64qqvxxb8-vultr-cli-3.3.1",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/rl1jb4y5vl2i5ps221bl97n64qqvxxb8-vultr-cli-3.3.1"
+        },
+        "x86_64-linux": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/6246cg32sj6s3hz96f5h2mna947n55rc-vultr-cli-3.3.1",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/6246cg32sj6s3hz96f5h2mna947n55rc-vultr-cli-3.3.1"
+        }
+      }
+    }
+  }
+}

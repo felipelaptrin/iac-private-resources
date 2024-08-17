@@ -1,0 +1,15 @@
+{
+  "$schema": "https://raw.githubusercontent.com/jetify-com/devbox/0.12.0/.schema/devbox.schema.json",
+  "packages": [
+    "opentofu@1.8.1",
+    "vultr-cli@3.3.1"
+  ],
+  "shell": {
+    "scripts": {
+      "plan": [
+        "tofu init",
+        "tofu plan -var-file=variables.tfvars -auto-approve"
+      ]
+    }
+  }
+}
