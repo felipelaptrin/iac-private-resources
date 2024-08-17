@@ -73,6 +73,6 @@ resource "vultr_database" "this" {
   ]
 }
 
-# resource "postgresql_database" "this" {
-#   name = "demo"
-# }
+resource "postgresql_database" "this" {
+  name = "demo"
+}
