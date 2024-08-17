@@ -12,6 +12,10 @@ runs:
     - name: Install devbox
       uses: jetify-com/devbox-install-action@v0.11.0
 
+    - uses: webfactory/ssh-agent@v0.9.0
+      with:
+        ssh-private-key: ${{ env.SSH_PRIVATE_KEY }}
+
     - name: Apply Opentofu
       shell: bash
       env:
