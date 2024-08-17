@@ -20,7 +20,7 @@ runs:
 
     - uses: webfactory/ssh-agent@v0.9.0
       with:
-        ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+        ssh-private-key: ${{ env.SSH_PRIVATE_KEY }}
 
     - name: Plan
       shell: bash
