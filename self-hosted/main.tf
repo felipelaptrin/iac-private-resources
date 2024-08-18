@@ -83,5 +83,5 @@ resource "vultr_database" "this" {
 }
 
 resource "postgresql_database" "this" {
-  name = "demo"
+  name = "demodb"
 }
