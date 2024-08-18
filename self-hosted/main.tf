@@ -56,9 +56,15 @@ cd /home/ubuntu && mkdir actions-runner && cd actions-runner
 curl -o actions-runner-linux.tar.gz -L https://github.com/actions/runner/releases/download/${var.github_actions_version}/actions-runner-linux-x64-${local.github_actions_version}.tar.gz
 tar xzf ./actions-runner-linux.tar.gz
 sudo chown -R ubuntu /home/ubuntu/actions-runner
-sudo -u ubuntu ./config.sh --name vultr --replace --url https://github.com/${var.repo_name} --token ${data.github_actions_registration_token.this.token}
+sudo -u ubuntu ./config.sh --name vultr --replace --url https://github.com/${var.repo_name} --token ${sensitive(data.github_actions_registration_token.this.token)}
 sudo -u ubuntu ./run.sh
   EOF
+
+  lifecycle {
+    ignore_changes = [
+      user_data
+     ]
+  }
 }
 
 ############################
