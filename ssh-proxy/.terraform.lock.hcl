@@ -5,7 +5,6 @@ provider "registry.opentofu.org/cyrilgdn/postgresql" {
   version     = "1.22.0"
   constraints = "1.22.0"
   hashes = [
-    "h1:8jjuILf07SZmfJjKsjEAlu5125pyRy4sSEJ+y68N7FU=",
     "h1:zQQKupK4vbHP90ESdqSdVVAXvI+cS2g9lE6DlUJ38+s=",
     "zh:038df91e31bda2a9a1f33adc886bc2084793e151130e29909b92f18b91315724",
     "zh:093328afc09cf13a5aed64daf9dc32d764e0a2b3c626c532e211fc22c08088f3",
@@ -28,7 +27,6 @@ provider "registry.opentofu.org/hashicorp/external" {
   version = "2.3.3"
   hashes = [
     "h1:bDJy8Mj5PMTEuxm6Wu9A9dATBL+mQDmHx8NnLzjvCcc=",
-    "h1:bPQCwpSGRyqu3wpKkMqg9WVNTCTXGFup6QS84JgJydM=",
     "zh:1ec36864a1872abdfd1c53ba3c6837407564ac0d86ab80bf4fdc87b41106fe68",
     "zh:2117e0edbdc88f0d22fe02fe6b2cfbbbc5d5ce40f8f58e484d8d77d64dd7340f",
     "zh:4bcfdacd8e2508c16e131de9072cecd359e0ade3b8c6798a049883f37a5872ea",
@@ -46,7 +44,6 @@ provider "registry.opentofu.org/vultr/vultr" {
   version     = "2.21.0"
   constraints = "2.21.0"
   hashes = [
-    "h1:+ExuN7qWJYRydmEOGRP5nX9HxX0TAlFUM4Vop1UAJs0=",
     "h1:tSboTajjXQ9WQ8hOwf/ZLGQ/+TwUzno4vaiNz1VMus4=",
     "zh:09c7eeceeacd6d2f2c9406ad969a7d145bb21ea68ebcf7fe6426a764c2b15fcd",
     "zh:41505f11b630154167bd68720937992c3829a0e7b6766eebc57a1636462533c6",

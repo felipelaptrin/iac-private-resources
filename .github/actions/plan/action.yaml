@@ -34,6 +34,11 @@ runs:
         devbox run tofu -chdir=$FOLDER init
         devbox run tofu -chdir=$FOLDER plan -var-file=variables.tfvars
 
+    - name: Install GH CLI
+      uses: dev-hanz-ops/install-gh-cli-action@v0.1.0
+      with:
+        gh-cli-version: 2.54.0
+
     - name: Commit .terraform.lock.hcl files
       working-directory: ${{ inputs.folder }}
       if: github.ref != 'refs/heads/main'
