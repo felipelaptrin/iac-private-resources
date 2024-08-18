@@ -19,10 +19,10 @@ provider "vultr" {}
 
 provider "github" {}
 
-# provider "postgresql" {
-#   host     = vultr_database.this.host
-#   port     = vultr_database.this.port
-#   username = vultr_database.this.user
-#   password = vultr_database.this.password
-#   database = vultr_database.this.dbname
-# }
+provider "postgresql" {
+  host     = vultr_database.this.host
+  port     = vultr_database.this.port
+  username = vultr_database.this.user
+  password = vultr_database.this.password
+  database = vultr_database.this.dbname
+}
