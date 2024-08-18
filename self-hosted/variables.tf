@@ -4,7 +4,7 @@ variable "repo_name" {
 }
 
 variable "public_ssh_key" {
-  description = "Public SSH key to attach to the authorized_keys of the bastion host"
+  description = "Public SSH key to attach to the authorized_keys of the self-hosted runner host"
   type        = string
 }
 
