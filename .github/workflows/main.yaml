@@ -11,6 +11,9 @@ env:
   VULTR_API_KEY: "${{ secrets.VULTR_API_KEY }}"
   SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
 
+permissions:
+  contents: write
+
 jobs:
   ssh-proxy:
     runs-on: ubuntu-latest
