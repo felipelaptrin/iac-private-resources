@@ -28,12 +28,6 @@ resource "vultr_firewall_rule" "bastion" {
 ############################
 ###### Virual Machine
 ############################
-# resource "vultr_reserved_ip" "bastion" {
-#   label   = local.label
-#   region  = local.region
-#   ip_type = "v4"
-# }
-
 resource "vultr_ssh_key" "bastion" {
   name    = "bastion"
   ssh_key = var.public_ssh_key
@@ -49,7 +43,6 @@ resource "vultr_instance" "bastion" {
   firewall_group_id   = vultr_firewall_group.bastion.id
   ssh_key_ids         = [vultr_ssh_key.bastion.id]
   enable_ipv6         = true
-  # reserved_ip_id      = vultr_reserved_ip.bastion.id
   disable_public_ipv4 = false
   ddos_protection     = false
   activation_email    = false
